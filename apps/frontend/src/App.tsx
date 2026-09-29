@@ -10,7 +10,7 @@ export function App() {
   <Routes>
   <Route path="/form" element={<Form></Form>}></Route>
   <Route path="/result" element={<Result></Result>}></Route>
-  <Route path="/interview/:response.data.message" element={<Interview></Interview>}></Route>
+  <Route path="/interview/:interviewid" element={<Interview></Interview>}></Route>
  
   </Routes>
   <Toaster position="bottom-left"></Toaster>
