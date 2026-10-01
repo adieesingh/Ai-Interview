@@ -1,3 +1,5 @@
+import { BACKEND_URL } from "@/lib/config";
+import axios from "axios";
 import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 // import { DeepgramClient } from "@deepgram/sdk";
@@ -36,7 +38,9 @@ export function Interview() {
         const recived = JSON.parse(message.data);
         const transcript = recived.channel.alternatives[0].transcript;
         if (transcript) {
-          console.log(transcript);
+          axios.post(`${BACKEND_URL}/api/v1/session/user/response/${interviewid}`, {
+                        message: transcript,
+                    });
         }
       };
     })()
