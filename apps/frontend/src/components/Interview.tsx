@@ -38,11 +38,12 @@ export function Interview() {
         const recived = JSON.parse(message.data);
         const transcript = recived.channel.alternatives[0].transcript;
         if (transcript) {
-          axios.post(`${BACKEND_URL}/api/v1/session/user/response/${interviewid}`, {
+          axios.post(`${BACKEND_URL}/api/v1/session/${interviewid}`, {
                         message: transcript,
                     });
         }
       };
+     
     })()
   }, [interviewid]);
 
