@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { toast } from "sonner";
-import axios from "axios";
-import { BACKEND_URL } from "@/lib/config";
+import { Input } from "./ui/input";         
+import {toast} from "sonner"
+import axios from "axios"
 import { useNavigate } from "react-router-dom";
-export function Form() {
-   const navigation = useNavigate()
-  const [github, setGithub] = useState<string | undefined>();
+import { BACKEND_URL } from "@/lib/config";
+export  function Form() {
+  const navigate = useNavigate()
+  const[github,setGithub]=useState<string | undefined>();
+  
 
   async function Submit() {
    
@@ -19,7 +20,7 @@ export function Form() {
       await axios.post(`${BACKEND_URL}/api/v1/pre-interview`, {
         github,
       }).then((response)=>{
-        navigation(`/interview/${response.data.message}`)
+        navigate(`/interview/${response.data.message}`)
       }).catch((error)=>{
         toast("Something went wrong ")
         console.log(error)
